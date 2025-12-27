@@ -32,11 +32,80 @@ function App() {
     theme: 'light',
   });
 
+  // Validation errors
+  const [errors, setErrors] = useState({});
+  const [touchedFields, setTouchedFields] = useState({});
+
+  /**
+   * Validate email format
+   */
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  /**
+   * Validate phone format (basic)
+   */
+  const isValidPhone = (phone) => {
+    return /^[\d\s\-\+\(\)]+$/.test(phone) && phone.replace(/\D/g, '').length >= 10;
+  };
+
+  /**
+   * Validate current step
+   */
+  const validateStep = (stepIndex) => {
+    const newErrors = {};
+
+    if (stepIndex === 0) {
+      // Personal Information validation
+      if (!formData.firstName.trim()) {
+        newErrors.firstName = 'First name is required';
+      }
+      if (!formData.lastName.trim()) {
+        newErrors.lastName = 'Last name is required';
+      }
+      if (!formData.email.trim()) {
+        newErrors.email = 'Email is required';
+      } else if (!isValidEmail(formData.email)) {
+        newErrors.email = 'Please enter a valid email address';
+      }
+    }
+
+    if (stepIndex === 1) {
+      // Contact Details validation
+      if (!formData.phone.trim()) {
+        newErrors.phone = 'Phone number is required';
+      } else if (!isValidPhone(formData.phone)) {
+        newErrors.phone = 'Please enter a valid phone number (at least 10 digits)';
+      }
+      if (!formData.address.trim()) {
+        newErrors.address = 'Address is required';
+      }
+      if (!formData.city.trim()) {
+        newErrors.city = 'City is required';
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   /**
    * Update form data
    */
   const updateField = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear error for this field when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  /**
+   * Mark field as touched
+   */
+  const handleBlur = (field) => {
+    setTouchedFields(prev => ({ ...prev, [field]: true }));
   };
 
   /**
@@ -78,36 +147,51 @@ function App() {
                 <p className="step-description">Enter your basic information</p>
                 
                 <div className="form-group">
-                  <label htmlFor="firstName">First Name</label>
+                  <label htmlFor="firstName">First Name *</label>
                   <input
                     id="firstName"
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => updateField('firstName', e.target.value)}
+                    onBlur={() => handleBlur('firstName')}
                     placeholder="John"
+                    className={errors.firstName && touchedFields.firstName ? 'error' : ''}
                   />
+                  {errors.firstName && touchedFields.firstName && (
+                    <span className="error-message">{errors.firstName}</span>
+                  )}
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="lastName">Last Name</label>
+                  <label htmlFor="lastName">Last Name *</label>
                   <input
                     id="lastName"
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => updateField('lastName', e.target.value)}
+                    onBlur={() => handleBlur('lastName')}
                     placeholder="Doe"
+                    className={errors.lastName && touchedFields.lastName ? 'error' : ''}
                   />
+                  {errors.lastName && touchedFields.lastName && (
+                    <span className="error-message">{errors.lastName}</span>
+                  )}
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
+                  <label htmlFor="email">Email Address *</label>
                   <input
                     id="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => updateField('email', e.target.value)}
+                    onBlur={() => handleBlur('email')}
                     placeholder="john.doe@example.com"
+                    className={errors.email && touchedFields.email ? 'error' : ''}
                   />
+                  {errors.email && touchedFields.email && (
+                    <span className="error-message">{errors.email}</span>
+                  )}
                 </div>
               </div>
             </Step>
@@ -126,36 +210,51 @@ function App() {
                   </p>
                   
                   <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
+                    <label htmlFor="phone">Phone Number *</label>
                     <input
                       id="phone"
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => updateField('phone', e.target.value)}
+                      onBlur={() => handleBlur('phone')}
                       placeholder="+1 (555) 123-4567"
+                      className={errors.phone && touchedFields.phone ? 'error' : ''}
                     />
+                    {errors.phone && touchedFields.phone && (
+                      <span className="error-message">{errors.phone}</span>
+                    )}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="address">Street Address</label>
+                    <label htmlFor="address">Street Address *</label>
                     <input
                       id="address"
                       type="text"
                       value={formData.address}
                       onChange={(e) => updateField('address', e.target.value)}
+                      onBlur={() => handleBlur('address')}
                       placeholder="123 Main St"
+                      className={errors.address && touchedFields.address ? 'error' : ''}
                     />
+                    {errors.address && touchedFields.address && (
+                      <span className="error-message">{errors.address}</span>
+                    )}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="city">City</label>
+                    <label htmlFor="city">City *</label>
                     <input
                       id="city"
                       type="text"
                       value={formData.city}
                       onChange={(e) => updateField('city', e.target.value)}
+                      onBlur={() => handleBlur('city')}
                       placeholder="New York"
+                      className={errors.city && touchedFields.city ? 'error' : ''}
                     />
+                    {errors.city && touchedFields.city && (
+                      <span className="error-message">{errors.city}</span>
+                    )}
                   </div>
 
                   {isActive && isCompleted && (
@@ -271,17 +370,63 @@ function App() {
               )}
             </Step>
 
-            {/* Navigation with custom slot rendering */}
+            {/* Navigation with validation */}
             <Navigation 
-              renderNext={({ onClick, disabled, isLastStep }) => (
-                <button
-                  className={`stepper-btn stepper-btn-next ${isLastStep ? 'last-step' : ''}`}
-                  onClick={onClick}
-                  disabled={disabled}
-                >
-                  {isLastStep ? '✓ Complete' : 'Next Step →'}
-                </button>
-              )}
+              onNext={(currentStep) => {
+                // Validate before moving to next step
+                const isValid = validateStep(currentStep);
+                if (!isValid) {
+                  // Mark all fields as touched to show errors
+                  if (currentStep === 0) {
+                    setTouchedFields({
+                      firstName: true,
+                      lastName: true,
+                      email: true,
+                    });
+                  } else if (currentStep === 1) {
+                    setTouchedFields({
+                      phone: true,
+                      address: true,
+                      city: true,
+                    });
+                  }
+                  return false; // Prevent navigation
+                }
+              }}
+              renderNext={({ onClick, disabled, isLastStep, currentStep }) => {
+                const handleClick = () => {
+                  if (currentStep < 2) {
+                    const isValid = validateStep(currentStep);
+                    if (!isValid) {
+                      if (currentStep === 0) {
+                        setTouchedFields({
+                          firstName: true,
+                          lastName: true,
+                          email: true,
+                        });
+                      } else if (currentStep === 1) {
+                        setTouchedFields({
+                          phone: true,
+                          address: true,
+                          city: true,
+                        });
+                      }
+                      return;
+                    }
+                  }
+                  onClick();
+                };
+
+                return (
+                  <button
+                    className={`stepper-btn stepper-btn-next ${isLastStep ? 'last-step' : ''}`}
+                    onClick={handleClick}
+                    disabled={disabled}
+                  >
+                    {isLastStep ? 'Complete' : 'Next Step'}
+                  </button>
+                );
+              }}
             />
           </Stepper>
         </section>

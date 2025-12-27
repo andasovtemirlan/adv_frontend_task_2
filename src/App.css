@@ -108,6 +108,19 @@
   border-color: #2563eb;
 }
 
+/* Error state */
+.form-group input.error,
+.form-group select.error {
+  border-color: #dc2626;
+}
+
+.error-message {
+  display: block;
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
 .checkbox-group label {
   display: flex;
   align-items: center;
