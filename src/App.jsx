@@ -154,7 +154,7 @@ function App() {
                     value={formData.firstName}
                     onChange={(e) => updateField('firstName', e.target.value)}
                     onBlur={() => handleBlur('firstName')}
-                    placeholder="John"
+                    placeholder="Palenshe"
                     className={errors.firstName && touchedFields.firstName ? 'error' : ''}
                   />
                   {errors.firstName && touchedFields.firstName && (
@@ -170,7 +170,7 @@ function App() {
                     value={formData.lastName}
                     onChange={(e) => updateField('lastName', e.target.value)}
                     onBlur={() => handleBlur('lastName')}
-                    placeholder="Doe"
+                    placeholder="Palenshiev"
                     className={errors.lastName && touchedFields.lastName ? 'error' : ''}
                   />
                   {errors.lastName && touchedFields.lastName && (
@@ -186,7 +186,7 @@ function App() {
                     value={formData.email}
                     onChange={(e) => updateField('email', e.target.value)}
                     onBlur={() => handleBlur('email')}
-                    placeholder="john.doe@example.com"
+                    placeholder="palenshe.palenshiev@example.com"
                     className={errors.email && touchedFields.email ? 'error' : ''}
                   />
                   {errors.email && touchedFields.email && (
@@ -217,7 +217,7 @@ function App() {
                       value={formData.phone}
                       onChange={(e) => updateField('phone', e.target.value)}
                       onBlur={() => handleBlur('phone')}
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+7 (777) 777-77-77"
                       className={errors.phone && touchedFields.phone ? 'error' : ''}
                     />
                     {errors.phone && touchedFields.phone && (
