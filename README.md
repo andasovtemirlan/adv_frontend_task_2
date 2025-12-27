@@ -123,7 +123,7 @@ The `Step` component supports render props for dynamic content customization:
 | `label` | `string` | Step label from props |
 | `stepRef` | `RefObject` | Reference to step container element |
 
-## 🎛️ Slots Pattern
+## Slots Pattern
 
 Customize navigation buttons using the slots pattern:
 
@@ -383,14 +383,11 @@ All components include comprehensive JSDoc comments explaining:
 
 ## Contributing
 
-This is an academic project for Advanced Frontend Development course. 
-
-## License
-
-MIT License - free to use for educational purposes.
+This is an academic project for Advanced Frontend Development course.
 
 ## Author
-
+Andasov Temirlan
+Group CSE-2507M
 Assignment 2: React Compound Components and Render Props Pattern  
 Advanced Frontend Development - Second Trimester  
 Masters Program
