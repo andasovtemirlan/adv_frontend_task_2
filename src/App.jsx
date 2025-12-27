@@ -50,19 +50,17 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>React Stepper Component</h1>
+        <h1>Multi-Step Form</h1>
         <p className="subtitle">
-          Compound Components Pattern with Render Props & Full A11y Support
+          User Registration Example
         </p>
       </header>
 
       <main className="app-main">
-        {/* Example 1: Multi-step Form with Compound Components */}
         <section className="demo-section">
-          <h2>Multi-Step User Registration Form</h2>
+          <h2>User Registration</h2>
           <p className="demo-description">
-            Demonstrates compound components pattern with full keyboard navigation (Arrow keys, Tab, Enter) 
-            and ARIA attributes for accessibility.
+            Please complete all steps to register your account.
           </p>
 
           <Stepper initialStep={0}>
@@ -160,11 +158,9 @@ function App() {
                     />
                   </div>
 
-                  {/* This demonstrates render props - we have access to step state */}
-                  {isActive && (
+                  {isActive && isCompleted && (
                     <div className="info-box">
-                      <strong>Render Props Example:</strong> This content is conditionally 
-                      rendered based on the step's active state passed via render props.
+                      Your contact information has been saved.
                     </div>
                   )}
                 </div>
@@ -289,95 +285,11 @@ function App() {
             />
           </Stepper>
         </section>
-
-        {/* Features Overview */}
-        <section className="features-section">
-          <h2>Component Features</h2>
-          
-          <div className="features-grid">
-            <div className="feature-card">
-              <h3>🔧 Compound Components</h3>
-              <p>
-                Full encapsulation with high API flexibility. Components work together 
-                through shared context without prop drilling.
-              </p>
-              <code>&lt;Stepper&gt;&lt;Step&gt;...&lt;/Step&gt;&lt;/Stepper&gt;</code>
-            </div>
-
-            <div className="feature-card">
-              <h3>🎨 Render Props & Slots</h3>
-              <p>
-                Customize step content with render props pattern. Pass functions as children 
-                to access step state and customize rendering.
-              </p>
-              <code>{`{({ isActive }) => <div>...</div>}`}</code>
-            </div>
-
-            <div className="feature-card">
-              <h3>🔄 State Synchronization</h3>
-              <p>
-                Internal state management via Context API. No prop drilling required - 
-                all components sync automatically.
-              </p>
-              <code>useStepper() hook</code>
-            </div>
-
-            <div className="feature-card">
-              <h3>⌨️ Keyboard Navigation</h3>
-              <p>
-                Full keyboard support: Arrow keys for navigation, Tab for focus management, 
-                Enter/Space to activate, Home/End for boundaries.
-              </p>
-              <code>ARIA + Keyboard handlers</code>
-            </div>
-
-            <div className="feature-card">
-              <h3>♿ Accessibility (A11y)</h3>
-              <p>
-                Complete ARIA attributes: role="tablist", aria-selected, aria-controls, 
-                aria-labelledby for screen reader support.
-              </p>
-              <code>Full ARIA implementation</code>
-            </div>
-
-            <div className="feature-card">
-              <h3>📦 Industrial Grade</h3>
-              <p>
-                Production-ready component with proper focus management, keyboard navigation, 
-                accessibility, and comprehensive documentation.
-              </p>
-              <code>Ready for real-world use</code>
-            </div>
-          </div>
-        </section>
-
-        {/* Keyboard shortcuts guide */}
-        <section className="keyboard-guide">
-          <h2>Keyboard Shortcuts</h2>
-          <div className="shortcuts-grid">
-            <div className="shortcut">
-              <kbd>Tab</kbd> / <kbd>Shift + Tab</kbd>
-              <span>Navigate focus between elements</span>
-            </div>
-            <div className="shortcut">
-              <kbd>←</kbd> / <kbd>→</kbd>
-              <span>Navigate between steps</span>
-            </div>
-            <div className="shortcut">
-              <kbd>Enter</kbd> / <kbd>Space</kbd>
-              <span>Activate focused step</span>
-            </div>
-            <div className="shortcut">
-              <kbd>Home</kbd> / <kbd>End</kbd>
-              <span>Jump to first/last step</span>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="app-footer">
         <p>
-          Built with React + Vite | Compound Components Pattern | Full A11y Support
+          Advanced Frontend Development - Assignment 2
         </p>
       </footer>
     </div>

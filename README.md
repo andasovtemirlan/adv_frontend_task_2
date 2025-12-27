@@ -2,21 +2,21 @@
 
 A flexible, reusable, and accessible React component library featuring a Stepper component built using the **Compound Components** pattern with **Render Props** for customization and full **Accessibility (A11y)** support.
 
-## 📋 Assignment Overview
+## Assignment Overview
 
 **Goal:** Design flexible and reusable industrial-grade UI components.
 
 **Assignment:** Create a component library for building complex multi-step forms (Stepper) with advanced features.
 
-### ✅ Requirements Met
+### Requirements Met
 
-1. ✅ **Compound Components Pattern** - Components work together through shared context (`<Stepper><Step>...</Step></Stepper>`)
-2. ✅ **Render Props & Slots** - Customize step content with render functions and slot patterns
-3. ✅ **State Synchronization** - Internal state management via Context API without prop drilling
-4. ✅ **Keyboard Navigation** - Full keyboard support for accessibility (Arrow keys, Tab, Enter, Home/End)
-5. ✅ **ARIA Attributes** - Complete ARIA implementation for screen readers
+1. **Compound Components Pattern** - Components work together through shared context (`<Stepper><Step>...</Step></Stepper>`)
+2. **Render Props & Slots** - Customize step content with render functions and slot patterns
+3. **State Synchronization** - Internal state management via Context API without prop drilling
+4. **Keyboard Navigation** - Full keyboard support for accessibility (Arrow keys, Tab, Enter, Home/End)
+5. **ARIA Attributes** - Complete ARIA implementation for screen readers
 
-## 🏗️ Architecture
+## Architecture
 
 ### Compound Components Pattern
 
@@ -45,7 +45,7 @@ The Stepper component is built using the Compound Components pattern, which prov
 | `StepList` | Step indicators/headers | `renderStep`, `className` |
 | `Navigation` | Previous/Next buttons | `renderPrevious`, `renderNext`, `onNext`, `onPrevious` |
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Installation
 
@@ -96,7 +96,7 @@ function MyForm() {
 }
 ```
 
-## 🎨 Render Props Pattern
+## Render Props Pattern
 
 The `Step` component supports render props for dynamic content customization:
 
@@ -142,7 +142,7 @@ Customize navigation buttons using the slots pattern:
 />
 ```
 
-## ⌨️ Keyboard Navigation
+## Keyboard Navigation
 
 Full keyboard support for accessibility:
 
@@ -154,7 +154,7 @@ Full keyboard support for accessibility:
 | `Home` | Jump to first step |
 | `End` | Jump to last step |
 
-## ♿ Accessibility (A11y)
+## Accessibility (A11y)
 
 Complete ARIA implementation following WAI-ARIA best practices:
 
@@ -174,17 +174,17 @@ Complete ARIA implementation following WAI-ARIA best practices:
 - Visual focus indicators for keyboard navigation
 - Focus moves automatically when navigating with arrow keys
 
-## 🧪 Testing
+## Testing
 
 The component includes comprehensive tests for:
 
-- ✅ Component rendering
-- ✅ ARIA attributes presence and correctness
-- ✅ Keyboard navigation (Arrow keys, Home/End, Enter/Space)
-- ✅ Navigation button functionality
-- ✅ State synchronization across components
-- ✅ Render props pattern
-- ✅ Step completion tracking
+- Component rendering
+- ARIA attributes presence and correctness
+- Keyboard navigation (Arrow keys, Home/End, Enter/Space)
+- Navigation button functionality
+- State synchronization across components
+- Render props pattern
+- Step completion tracking
 
 ```bash
 # Run all tests
@@ -200,7 +200,7 @@ npm run test:ui
 npm run test:coverage
 ```
 
-## 📚 API Reference
+## API Reference
 
 ### `Stepper`
 
@@ -318,21 +318,21 @@ function CustomComponent() {
 }
 ```
 
-## 🎯 Grading Rubric Compliance
+## Grading Rubric Compliance
 
 ### Component Architecture: **Excellent (90-100)**
-- ✅ Full encapsulation of logic
-- ✅ High API flexibility through compound components
-- ✅ Context API for state management (no prop drilling)
-- ✅ Render props and slots for customization
+- Full encapsulation of logic
+- High API flexibility through compound components
+- Context API for state management (no prop drilling)
+- Render props and slots for customization
 
 ### A11y (Accessibility): **Excellent (90-100)**
-- ✅ Full keyboard navigation support
-- ✅ Complete ARIA attributes implementation
-- ✅ Proper focus management
-- ✅ Screen reader friendly
+- Full keyboard navigation support
+- Complete ARIA attributes implementation
+- Proper focus management
+- Screen reader friendly
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -353,7 +353,7 @@ src/
 └── main.jsx                      # Entry point
 ```
 
-## 🔧 Technologies Used
+## Technologies Used
 
 - **React 19.2** - UI library
 - **Vite 7.2** - Build tool and dev server
@@ -362,7 +362,7 @@ src/
 - **Context API** - State management
 - **CSS3** - Styling with focus on accessibility
 
-## 💡 Key Features
+## Key Features
 
 1. **No Prop Drilling**: State is managed internally via Context API
 2. **Flexible Composition**: Build forms exactly how you need them
@@ -372,7 +372,7 @@ src/
 6. **Accessible**: WCAG 2.1 compliant with full keyboard support
 7. **Customizable**: Render props and slots for maximum flexibility
 
-## 📝 Code Comments
+## Code Comments
 
 All components include comprehensive JSDoc comments explaining:
 - Component purpose and usage
@@ -381,25 +381,25 @@ All components include comprehensive JSDoc comments explaining:
 - Implementation details
 - Accessibility features
 
-## 🤝 Contributing
+## Contributing
 
 This is an academic project for Advanced Frontend Development course. 
 
-## 📄 License
+## License
 
 MIT License - free to use for educational purposes.
 
-## 👨‍💻 Author
+## Author
 
 Assignment 2: React Compound Components and Render Props Pattern  
 Advanced Frontend Development - Second Trimester  
 Masters Program
 
-## 🔗 Repository
+## Repository
 
 GitHub: [https://github.com/andasovtemirlan/adv_frontend_task_2](https://github.com/andasovtemirlan/adv_frontend_task_2)
 
 ---
 
-**Built with ❤️ using React, Vite, and best practices for accessible, reusable components.**
+Built with React and Vite for Advanced Frontend Development course.
 
