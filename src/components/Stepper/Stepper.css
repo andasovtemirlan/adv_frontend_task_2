@@ -1,0 +1,199 @@
+/**
+ * Stepper.css
+ * 
+ * Styles for the Stepper compound component.
+ * Includes accessibility-focused styles for keyboard navigation.
+ */
+
+.stepper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Step List Styles */
+.step-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Progress line between steps */
+.step-list::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+/* Individual step item */
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+/* Keyboard focus styles for accessibility */
+.step-item:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.step-item:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+/* Step indicator circle */
+.step-indicator {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.step-item.active .step-indicator {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.step-item.completed .step-indicator {
+  background: #10b981;
+  color: white;
+}
+
+/* Step label */
+.step-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+  font-weight: 500;
+}
+
+.step-item.active .step-label {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.step-item.completed .step-label {
+  color: #10b981;
+}
+
+/* Step content area */
+.step-content {
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  min-height: 200px;
+  animation: fadeIn 0.3s ease;
+}
+
+.step-content:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation buttons */
+.stepper-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.stepper-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.stepper-btn-previous {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.stepper-btn-previous:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.stepper-btn-next {
+  background: #2563eb;
+  color: white;
+  margin-left: auto;
+}
+
+.stepper-btn-next:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.stepper-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stepper-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .step-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step-list::before {
+    display: none;
+  }
+
+  .step-item {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .step-indicator {
+    width: 32px;
+    height: 32px;
+  }
+
+  .step-label {
+    text-align: left;
+  }
+}
